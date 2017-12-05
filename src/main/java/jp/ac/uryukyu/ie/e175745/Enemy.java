@@ -70,5 +70,23 @@ public class Enemy extends LivingThing {
             System.out.printf("モンスター%sは倒れた。\n", name);
         }
     }*/
+    public void attack(LivingThing opponent) {
+        int damage = (int) (Math.random() * getAttack());
+        int pro = (int) (Math.random() * 10);
+
+        if (!isDead()) {
+            if (damage != 0) {
+                if(pro<=6){
+                    System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damage);
+                    opponent.wounded(damage);
+                }else{
+                    damage = damage*2;
+                    System.out.printf("%sの攻撃！痛恨の一撃！！%sに%dのダメージを与えた！！\n",getName(), opponent.getName(), damage);
+                }
+            } else {
+                System.out.printf("%sの攻撃！,,,だが、%sは攻撃を回避した！\n", getName(), opponent.getName());
+            }
+        }
+    }
 }
 
